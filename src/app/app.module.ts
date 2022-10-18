@@ -15,6 +15,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ExternalApiComponent } from './pages/external-api/external-api.component';
 
+import { AuthModule} from '@auth0/auth0-angular';
+import { environment as env } from '../environments/environment';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,12 +32,17 @@ import { ExternalApiComponent } from './pages/external-api/external-api.componen
     HomeComponent,
     ProfileComponent,
     ExternalApiComponent,
+    LoginButtonComponent,
+    LogoutButtonComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    AuthModule.forRoot({
+      ...env.auth
+    })
   ],
   bootstrap: [AppComponent],
 })
